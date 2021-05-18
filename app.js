@@ -6,6 +6,7 @@ var logger = require('morgan');
 const methodOverride = require('method-override');
 const session = require('express-session');
 const flash = require('connect-flash');
+const cors = require('cors');
 // import mongoose
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://user:tobirama2@cluster0.37scg.mongodb.net/db_staycation?retryWrites=true&w=majority', {
@@ -33,6 +34,7 @@ app.use(session({
   saveUninitialized: true,
   cookie: { maxAge: 3600000 }
 }));
+app.use(cors())
 app.use(flash());
 app.use(logger('dev'));
 app.use(express.json());
